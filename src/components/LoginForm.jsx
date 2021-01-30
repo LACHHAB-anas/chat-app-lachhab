@@ -11,12 +11,12 @@ const Modal = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const authObject = { 'Project-ID': projectID, 'User-Name': username, 'User-Secret': password };
+    const authObject = { 'Project-ID': projectID, 'User-Name': username.toUpperCase(), 'User-Secret': password };
 
     try {
       await axios.get('https://api.chatengine.io/chats', { headers: authObject });
 
-      localStorage.setItem('username', username);
+      localStorage.setItem('username', username.toUpperCase());
       localStorage.setItem('password', password);
 
       window.location.reload();
